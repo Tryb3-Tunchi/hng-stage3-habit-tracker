@@ -10,8 +10,8 @@ export function toggleHabitCompletion(habit: Habit, date: string): Habit {
     completions.splice(index, 1)
   }
 
-  // Ensure no duplicates
-  const unique = [...new Set(completions)]
+  // Ensure no duplicates — Array.from avoids downlevelIteration issue
+  const unique = Array.from(new Set(completions))
 
   return { ...habit, completions: unique }
 }
